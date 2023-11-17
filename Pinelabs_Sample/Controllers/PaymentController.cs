@@ -1,3 +1,4 @@
+using System.Reflection;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using PineLabsSdk;
@@ -144,10 +145,8 @@ public class PaymentController : Controller
         try
         {
             this._emi ??= new EMI(data.merchantId, data.access_code, data.pg_mode);
-            product_details details = new product_details();
-            details.product_amount = decimal.Parse(data.product_amount);
-            details.product_code = data.product_code;
-            var response = this._emi.CalculateEmi(data.product_amount, new[] { details });
+            var values = JsonSerializer.Deserialize<List<product_details>>(data.products).ToArray();
+            var response = this._emi.CalculateEmi(data.product_amount, values);
             var formattedResponse = JsonSerializer.Serialize(response, new JsonSerializerOptions
             {
                 WriteIndented = true
@@ -206,6 +205,7 @@ public class PaymentController : Controller
                 TempData["data"] = "Hash is invalid";
                 TempData["isValid"] = false;
             }
+
             return RedirectToAction("Hash");
         }
         catch (Exception e)
@@ -277,11 +277,10 @@ public class EmiRequestModel
 
     public string access_code { get; set; }
 
-    public string product_code { get; set; }
     public bool pg_mode { get; set; }
-
     public string product_amount { get; set; }
-
+    public string products { get; set; }
+ 
     public bool PayNow { get; set; }
 }
 

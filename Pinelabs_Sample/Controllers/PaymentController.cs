@@ -127,7 +127,9 @@ public class PaymentController : Controller
             modes.bnpl = data.payment_mode.Contains("bnpl");
             modes.prebooking = data.payment_mode.Contains("prebooking");
 
-            var response = this._payment.Create(txnData, customerData, billingData, shippingData, udfs, modes).Result;
+            product_details[] products = JsonSerializer.Deserialize<product_details[]>(data.products);
+
+            var response = this._payment.Create(txnData, customerData, billingData, shippingData, udfs, modes, products).Result;
             Console.Write(response?.url);
             return Redirect(response?.url ?? "/payment");
         }
@@ -226,8 +228,7 @@ public class PaymentRequestModel
     public string txn_id { get; set; }
     public int amount_in_paisa { get; set; }
     public string callback_url { get; set; }
-    public string product_code { get; set; }
-    public int product_amount { get; set; }
+    public string products { get; set; }
     public List<string> payment_mode { get; set; }
     public string customer_id { get; set; }
     public string first_name { get; set; }

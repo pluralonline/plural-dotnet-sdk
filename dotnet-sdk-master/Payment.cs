@@ -22,7 +22,7 @@ public class Payment
 
     public async Task<CreateOrderReturnType?> Create(txn_data txnData, customer_data customerData,
         billing_data billingData,
-        shipping_data shippingData, udf_data udfData, payment_mode paymentModes)
+        shipping_data shippingData, udf_data udfData, payment_mode paymentModes, product_details[] products = null)
     {
         try
         {
@@ -52,7 +52,8 @@ public class Payment
                     billing_data = billingData,
                     shipping_data = shippingData
                 },
-                udf_data = udfData
+                udf_data = udfData,
+                product_details = products ?? Array.Empty<product_details>()
             };
 
             var endpoint = isTest ? "https://uat.pinepg.in/api/" : "https://pinepg.in/api/";

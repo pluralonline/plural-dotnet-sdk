@@ -125,6 +125,23 @@ var payment_mode = new payment_mode(){
 }
 ```
 
+```csharp
+    // Products ( required only for multi cart ) If only EMI is selected then the amount needs to be equal to the sum of all product_amounts in this array and no other payment mode should be selected otherwise EMI offers will be shown.
+product_details[] products = new[]
+{
+    new product_details()
+    {
+        product_code = "",
+        product_amount = 20000
+    },
+    new product_details()
+    {
+        product_code = "",
+        product_amount = 20000
+    }
+};
+```
+
 ---
 
 ### Order Creation
@@ -144,7 +161,7 @@ The `create()` method returns a promise with the response or else throws an erro
 
 ```csharp
 // Create Order
-var response = await pinelabs.Create(new txn_data(), new customer_data(), new billing_data(), new shipping_data(), new udf_data(), new payment_mode());
+var response = await pinelabs.Create(new txn_data(), new customer_data(), new billing_data(), new shipping_data(), new udf_data(), new payment_mode(), new product_details[]);
 
 Console.WriteLine(JsonSerializer.Serialize(response));
 ```

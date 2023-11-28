@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6kLeJgeNZ+w3QP5KQTAZNM+7FAL3/yP6p3oTri7BUbeTWbNCXUPp40Tu433tuKNKlb81rxEaRqgaBMeRKQ/Sbg==",
+  "dgSpecHash": "izzI36Bn79WQ3NOGjaME7Q0HfC/WCb4zlIWsv46iiggENoq6ZGNEuuho4vbFOpc3nBH/RKcmEp6KX+YoReRFTg==",
   "success": true,
-  "projectFilePath": "F:\\Pinelabs\\Pinelabs_Example\\Pinelabs_Sample\\Pinelabs_Sample\\Pinelabs_Sample\\Pinelabs_Sample.csproj",
+  "projectFilePath": "F:\\Pinelabs\\Plural_Edge\\Dotnet SDK\\Pinelabs_Sample\\Pinelabs_Sample.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

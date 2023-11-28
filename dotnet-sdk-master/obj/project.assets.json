@@ -60,11 +60,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Plural_Edge\\Dotnet SDK\\PineLabsSdk.csproj",
+      "projectUniqueName": "F:\\Pinelabs\\Plural_Edge\\Dotnet SDK\\dotnet-sdk-master\\PineLabsSdk.csproj",
       "projectName": "PineLabsSdk",
-      "projectPath": "F:\\Plural_Edge\\Dotnet SDK\\PineLabsSdk.csproj",
+      "projectPath": "F:\\Pinelabs\\Plural_Edge\\Dotnet SDK\\dotnet-sdk-master\\PineLabsSdk.csproj",
       "packagesPath": "C:\\Users\\Aamir Zaidi\\.nuget\\packages\\",
-      "outputPath": "F:\\Plural_Edge\\Dotnet SDK\\obj\\",
+      "outputPath": "F:\\Pinelabs\\Plural_Edge\\Dotnet SDK\\dotnet-sdk-master\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Aamir Zaidi\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -112,7 +112,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }

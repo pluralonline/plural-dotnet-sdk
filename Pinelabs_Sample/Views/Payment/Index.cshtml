@@ -11,9 +11,15 @@
     <div class="text-center">
         <p class="mb-0">Create a new payment order here</p>
         <div class="row justify-content-center mt-2">
-            <div class="col-auto"><a href="/payment/fetch" class="text-decoration-none">Fetch Order Status</a></div>
-            <div class="col-auto"><a href="/payment/emi" class="text-decoration-none">EMI Plans</a></div>
-            <div class="col-auto"><a href="/payment/hash" class="text-decoration-none">Hash Verification</a></div>
+            <div class="col-auto">
+                <a href="/payment/fetch" class="text-decoration-none">Fetch Order Status</a>
+            </div>
+            <div class="col-auto">
+                <a href="/payment/emi" class="text-decoration-none">EMI Plans</a>
+            </div>
+            <div class="col-auto">
+                <a href="/payment/hash" class="text-decoration-none">Hash Verification</a>
+            </div>
         </div>
     </div>
 </div>
@@ -61,14 +67,20 @@
     <input type="text" name="callback_url" class="form-control" id="callback_url" placeholder="Callback URL" value="@Context.Request.GetDisplayUrl()" required>
 </div>
 
-<div class="col-sm-3">
-    <label for="product_code" class="form-label">Product Code</label>
-    <input type="text" name="product_code" class="form-control" id="product_code" placeholder="Product Code" value="testproduct02" required>
-</div>
-
-<div class="col-sm-3">
-    <label for="product_amount" class="form-label">Product Amount</label>
-    <input type="text" name="product_amount" class="form-control" id="product_amount" placeholder="Product Amount" value="10000" required>
+<div class="col-sm-6">
+    <label for="products" class="form-label">Products</label>
+    <textarea cols="30" name="products" class="form-control" id="products" placeholder="Products" required>
+        [
+            {
+                "product_code": "testSKU1",
+                "product_amount": 2000000
+            },
+            {
+                "product_code": "testSKU2",
+                "product_amount": 2000000
+            }
+        ]
+    </textarea>
 </div>
 
 <div class="col-sm-6">

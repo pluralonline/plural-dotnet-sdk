@@ -127,7 +127,7 @@ public class PaymentController : Controller
             modes.bnpl = data.payment_mode.Contains("bnpl");
             modes.prebooking = data.payment_mode.Contains("prebooking");
 
-            product_details[] products = JsonSerializer.Deserialize<product_details[]>(data.products);
+            product_details[] products = data.products != null ? JsonSerializer.Deserialize<product_details[]>(data.products) : Array.Empty<product_details>();
 
             var response = this._payment.Create(txnData, customerData, billingData, shippingData, udfs, modes, products).Result;
             Console.Write(response?.url);

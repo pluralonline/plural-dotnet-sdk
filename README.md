@@ -1,16 +1,20 @@
 # PineLabs .Net SDK
 
-This SDK offers simple to use api for integrating PineLabs api in your .net applications. It provide several easy
-methods for creating, fetching orders and calculate EMIs and verify hash.
+This SDK offers a simple-to-use API for integrating Pine Labs API in your .net applications. It provides several easy
+methods for creating, fetching orders, calculating EMIs, and verifying hash.
+
+.Net Integration Guide: https://youtu.be/mlkoTTYKe5Q?si=qhXwEpe7D22e-HKW
+
+Sample app: https://github.com/pluralonline/plural-dotnet-sdk-sampleapp
 
 ## Installation
 
-In order to install this SDK locally you'll need to follow the following steps.
+To install this SDK locally you'll need to follow the following steps.
 
-1. Download the sdk and extract it in a folder somewhere in your system.
-2. Setup a new project or open a existing project in your system.
-3. Now add reference to the SDK's DLL file on this path `SDK\bin\Debug\net7.0\PineLabsSdk.dll`
-4. Add reference to the file in your `.csproj` file like following
+1. Download the SDK and extract it in a folder somewhere in your system.
+2. Set up a new project or open an existing project in your system.
+3. Now add a reference to the SDK's DLL file on this path `SDK\bin\Debug\net7.0\PineLabsSdk.dll`
+4. Add a reference to the file in your `.csproj` file like the following
 
 ```xml
 <ItemGroup>
@@ -26,15 +30,15 @@ In order to install this SDK locally you'll need to follow the following steps.
 
 ## Usage For SDK
 
-### Create Instance of PineLabs SDK
+### Create an Instance of PineLabs SDK
 
-Add `using PineLabsSdk;` at the top of the file to import the sdk. Now create instance of the `payment` class as
+Add `using PineLabsSdk;` at the top of the file to import the SDK. Now create an instance of the `payment` class as
 following it takes several parameters
 
-1. Merchant ID (string) : Merchant ID provided by PineLabs
-2. Merchant Access Code (string) : Merchant Access Code Provided by PineLabs
-3. Merchant Secret (string) : Merchant Secret
-4. isTest (boolean) : If using test mode then set this to `true`
+1. Merchant ID (string): Merchant ID provided by PineLabs
+2. Merchant Access Code (string): Merchant Access Code Provided by PineLabs
+3. Merchant Secret (string): Merchant Secret
+4. isTest (boolean): If using test mode then set this to `true`
 
 ```csharp
     var pinelabs = new Payment("{merchantId}", "{merchantAccessCode}", "{merchantSecret}", isTestMode); 
@@ -44,7 +48,7 @@ following it takes several parameters
 
 ### Create Order
 
-This section explains how to create order for payment processing. There are a couple of things required in order to
+This section explains how to create an order for payment processing. There are a couple of things required to
 create an order.
 
 ### Parameters  Required & Optional
@@ -157,7 +161,7 @@ creating an order with the provided parameters. It takes the following positiona
 6. UDF Data
 7. Product Details
 
-The `create()` method returns a promise with the response or else throws an error if something went wrong.
+The `create()` method returns a promise with the response or else throws an error if something goes wrong.
 
 ```csharp
 // Create Order
@@ -259,14 +263,14 @@ Console.WriteLine(JsonSerializer.Serialize(response));
 
 ---
 
-### Creating Instance Of EMI Class
+### Creating an Instance Of EMI Class
 
-With the EMI calculation you'll need to create an instance of the EMI class. It takes the same arguments as Payment
+With the EMI calculation, you'll need to create an instance of the EMI class. It takes the same arguments as Payment
 class except it doesn't require merchant secret which are as follows:
 
-1. Merchant ID (string) : Merchant ID provided by PineLabs
-2. Merchant Access Code (string) : Merchant Access Code Provided by PineLabs
-3. isTest (boolean) : If using test mode then set this to `true`
+1. Merchant ID (string): Merchant ID provided by PineLabs
+2. Merchant Access Code (string): Merchant Access Code Provided by PineLabs
+3. isTest (boolean): If using test mode then set this to `true`
 
 ```csharp
 var emi = new EMI("{merchantId}", "{merchantAccessCode}", isTestMode);
@@ -289,10 +293,10 @@ var product1 = new product_details();
 product1.product_code = "testSKU1"
 product1.product_amount = 500000
 
-// Add that product in a array of products
+// Add that product to an array of products
 product_details[] details = {product1}
 
-// pass it the total amount of the product and the array of products
+//Pass it the total amount of the product and the array of products
 var response = await emi.CalculateEmi("500000", details)
     
 Console.WriteLine(JsonSerializer.Serialize(response))
@@ -387,8 +391,7 @@ Fatal error: Uncaught Exception: INVALID DATA,MISMATCH_IN_TOTAL_CART_AMOUNT_AND_
 ---
 ### Verify Hash
 
-Using the instance of the SDK we created above we will call the `.VerifyHash()` method on the `hash` class for
-verifying
+Using the instance of the SDK we created above we will call the `.VerifyHash()` method on the `hash` class to verify
 a hash received in the response of callback and webhooks. It takes the following positional arguments
 
 1. Hash Received in Response ( `DIA_SECRET` )
